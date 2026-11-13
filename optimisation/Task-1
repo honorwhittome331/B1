@@ -3,6 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
 
+from pathlib import Path
+
+FIG_DIR = Path(__file__).resolve().parent.parent / "figures"
+FIG_DIR.mkdir(exist_ok=True)
+
 
 def rosenbrock(x, y):
     """f(x, y) = 100 (y - x^2)^2 + (1 - x)^2, minimum at (1, 1)."""
@@ -33,7 +38,7 @@ ax.set_zlabel("f(x, y)")
 ax.set_title("Rosenbrock's function (3D)")
 ax.legend()
 fig.tight_layout()
-fig.savefig("task1_rosenbrock_3d.png", dpi=150)
+fig.savefig(FIG_DIR / "task1_rosenbrock_3d.png", dpi=150)
 
 # 3. 2D contour plot. The function spans 0 to ~3600 on this box, so a
 #    logarithmic colour scale is needed to see the banana-shaped valley.
@@ -52,6 +57,6 @@ ax.set_title("Rosenbrock's function (2D contours)")
 ax.set_aspect("equal")
 ax.legend(loc="upper left")
 fig.tight_layout()
-fig.savefig("task1_rosenbrock_2d.png", dpi=150)
+fig.savefig(FIG_DIR / "task1_rosenbrock_2d.png", dpi=150)
 
 plt.show()
